@@ -6,12 +6,15 @@ import android.widget.TextView;
 
 import com.android.customsms.R;
 
+import Backend.MessageSender;
+
 /**
  * Created by zigza on 10/28/2017.
  */
 
 public class MessageDisplayAdapter extends RecyclerView.Adapter<MessageDisplayAdapter.MessageDisplayAdapterViewHolder> {
-    private
+    private MessageSender messages;
+
 
 
     class MessageDisplayAdapterViewHolder extends RecyclerView.ViewHolder {
