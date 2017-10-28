@@ -11,7 +11,7 @@ import com.android.customsms.R;
  */
 
 public class MessageDisplayAdapter extends RecyclerView.Adapter<MessageDisplayAdapter.MessageDisplayAdapterViewHolder> {
-
+    private
 
 
     class MessageDisplayAdapterViewHolder extends RecyclerView.ViewHolder {
