@@ -5,16 +5,16 @@
     android:weightSum="1">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_from_sender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_weight="0.03" />
+        android:layout_weight="0.03"
+        android:text="Sender name" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_body_preview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.08"
-        android:text="TextView" />
+        android:text="message preview " />
 </LinearLayout>
