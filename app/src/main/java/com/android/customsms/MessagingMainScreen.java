@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import Adapters.MessageDisplayAdapter;
+
 public class MessagingMainScreen extends AppCompatActivity {
     ArrayList<String> messageList = new ArrayList<String>();
     RecyclerView recyclerView;
@@ -73,7 +75,7 @@ public class MessagingMainScreen extends AppCompatActivity {
         int indexBody = smsInboxCursor.getColumnIndex("body");
         int indexAddress = smsInboxCursor.getColumnIndex("address");
         if (indexBody < 0 || !smsInboxCursor.moveToFirst()) return;
-        arrayAdapter.clear();
+        arayAdapter.clear();
         do {
             String str = "SMS From: " + smsInboxCursor.getString(indexAddress) +
                     "\n" + smsInboxCursor.getString(indexBody) + "\n";
