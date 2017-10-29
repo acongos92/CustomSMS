@@ -6,42 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.android.customsms.MessagingMainScreen">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="277dp"
-        android:layout_height="87dp"
-        android:layout_marginBottom="8dp"
-        android:hint="Input message here"
-        android:inputType="textCapCharacters"
-        android:singleLine="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/send_button"
-        android:layout_width="89dp"
-        android:layout_height="81dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
-        android:text="Send"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/editText"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        tools:text="Send" />
-
     <android.support.v7.widget.RecyclerView
-        android:layout_width="368dp"
-        android:layout_height="390dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/rv_message_list"
+        android:layout_width="384dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:id="@+id/rv_message_list" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="18dp" />
 
 </android.support.constraint.ConstraintLayout>

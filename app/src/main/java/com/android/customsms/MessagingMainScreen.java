@@ -30,18 +30,11 @@ public class MessagingMainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging_main_screen);
-        sendButton = (Button) findViewById(R.id.send_button);
-        sendButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                makeToast("Send was clicked");
-            }
-        });
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
             getPermissionToReadSMS();
         } else {
-            //refreshSmsInbox();
+            refreshSmsInbox();
         }
         /*
          * Recycler view setup
@@ -51,7 +44,6 @@ public class MessagingMainScreen extends AppCompatActivity {
         messageDisplayAdapter = new MessageDisplayAdapter(this, messageList);
         recyclerView.setAdapter(messageDisplayAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        refreshSmsInbox();
     }
 
 
@@ -76,7 +68,7 @@ public class MessagingMainScreen extends AppCompatActivity {
             if (grantResults.length == 1 &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "Read SMS permission granted", Toast.LENGTH_SHORT).show();
-                //refreshSmsInbox();
+                refreshSmsInbox();
             } else {
                 Toast.makeText(this, "Read SMS permission denied", Toast.LENGTH_SHORT).show();
             }
