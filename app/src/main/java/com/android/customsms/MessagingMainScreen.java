@@ -10,21 +10,48 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import Adapters.MessageDisplayAdapter;
+import Backend.MessageSender;
 
 public class MessagingMainScreen extends AppCompatActivity {
-    ArrayList<String> messageList = new ArrayList<String>();
+    MessageSender messageList = new MessageSender();
     RecyclerView recyclerView;
     MessageDisplayAdapter messageDisplayAdapter;
+    Button sendButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging_main_screen);
+        sendButton = (Button) findViewById(R.id.send_button);
+        sendButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                makeToast("Send was clicked");
+            }
+        });
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            getPermissionToReadSMS();
+        } else {
+            //refreshSmsInbox();
+        }
+        /*
+         * Recycler view setup
+         */
+
+        recyclerView = (RecyclerView) this.findViewById(R.id.rv_message_list);
+        messageDisplayAdapter = new MessageDisplayAdapter(this, messageList);
+        recyclerView.setAdapter(messageDisplayAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        refreshSmsInbox();
     }
 
 
@@ -74,12 +101,14 @@ public class MessagingMainScreen extends AppCompatActivity {
 
         int indexBody = smsInboxCursor.getColumnIndex("body");
         int indexAddress = smsInboxCursor.getColumnIndex("address");
-        if (indexBody < 0 || !smsInboxCursor.moveToFirst()) return;
-        arayAdapter.clear();
+        if (indexBody < 0 || !smsInboxCursor.moveToFirst()){
+            return;
+        }
         do {
-            String str = "SMS From: " + smsInboxCursor.getString(indexAddress) +
-                    "\n" + smsInboxCursor.getString(indexBody) + "\n";
-            arrayAdapter.add(str);
+            String name = "SMS From: " + smsInboxCursor.getString(indexAddress);
+            String message = smsInboxCursor.getString(indexBody);
+            messageList.addNewMessage(name,message);
+            messageDisplayAdapter.notifyDataSetChanged();
         } while (smsInboxCursor.moveToNext());
     }
 }
