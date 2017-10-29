@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.03"
+        android:paddingBottom="2dp"
         android:text="Sender name" />
 
     <TextView
@@ -17,4 +18,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.08"
         android:text="message preview " />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/black">
+
+    </View>
 </LinearLayout>
